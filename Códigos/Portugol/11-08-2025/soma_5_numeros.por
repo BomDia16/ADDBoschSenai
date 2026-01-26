@@ -1,0 +1,18 @@
+programa {
+  // feito no Portugol WEB
+
+  funcao inicio() {
+    // atributos
+    inteiro num[5]
+    inteiro i, soma = 0
+
+    para(i = 0; i < 5; i++) {
+      escreva("Digite um número: ")
+      leia(num[i])
+
+      soma += num[i]
+    }
+
+    escreva(soma)
+  }
+}

@@ -5,17 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index Rick Astley</title>
 
-    <style>
-        .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .coluna {
-            padding: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body style="display: flex;">
     <div class="container">
@@ -46,7 +37,7 @@
             <h1>Hello World</h1>
             <h1>Bom dia =)</h1>
 
-            <img src="https://media1.tenor.com/m/yheo1GGu3FwAAAAC/rick-roll-rick-ashley.gif" alt="Rick Astley dançando">
+            <img onclick="RickAstley()" src="https://media1.tenor.com/m/yheo1GGu3FwAAAAC/rick-roll-rick-ashley.gif" alt="Rick Astley dançando">
         </div>
         <div class="coluna">
             <h1>Inputs</h1>
@@ -54,6 +45,7 @@
             <input type="text" name="sim" id="">
             <br>
             <input type="color" name="" id="">
+            <div id="div3"></div>
         </div>
     </div>
 </body>

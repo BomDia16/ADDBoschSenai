@@ -3,6 +3,11 @@ const resultado = document.getElementById('resultado');
 const numero1 = document.getElementById('n1')
 const numero2 = document.getElementById('n2')
 const aparecer_resultado = document.getElementById('resultado-soma')
+let quadrado = document.getElementById('q1')
+const input_color = document.getElementById('input-color')
+let botao = document.getElementById('botao')
+let todo = document.getElementById('todo')
+let tarefa = document.getElementById('tarefa')
 
 input.addEventListener('input', function(event) {
     // 'event.target.value' pega o valor atual do input
@@ -10,12 +15,12 @@ input.addEventListener('input', function(event) {
     console.log(event.target.value); // Exibe no console a cada letra
 });
 
-numero1.addEventListener('input', function(evento) {
+numero1.addEventListener('input', function() {
     let soma = somar()
     aparecer_resultado.textContent = soma
 })
 
-numero2.addEventListener('input', function(evento) {
+numero2.addEventListener('input', function() {
     let soma = somar()
     aparecer_resultado.textContent = soma
 })
@@ -37,4 +42,21 @@ function transformar_gato() {
     miado.textContent = 'RAAAAAAAAAAAAAAAAAAAAR'
 
     console.log(gato)
+}
+
+input_color.addEventListener('input', function() {
+    mudar_cor(input_color.value)
+})
+
+function mudar_cor(color) {
+    quadrado.style.backgroundColor = color
+}
+
+botao.addEventListener('click', adicionar_item)
+
+function adicionar_item() {
+    let new_item = document.createElement('li')
+    new_item.innerHTML = tarefa.value
+    tarefa.value = ""
+    todo.appendChild(new_item)
 }

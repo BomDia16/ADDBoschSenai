@@ -7,3 +7,12 @@
 button {
     cursor: pointer;
 }
+
+#contas {
+    display: flex;
+    flex-direction: row;
+}
+
+#contas div {
+    width: 100%;
+}

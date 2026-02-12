@@ -8,6 +8,9 @@ const input_color = document.getElementById('input-color')
 let botao = document.getElementById('botao')
 let todo = document.getElementById('todo')
 let tarefa = document.getElementById('tarefa')
+let id = 1
+let botao_remover = document.getElementById('botao-remover')
+let input_remover = document.getElementById('input-remover')
 
 input.addEventListener('input', function(event) {
     // 'event.target.value' pega o valor atual do input
@@ -53,10 +56,24 @@ function mudar_cor(color) {
 }
 
 botao.addEventListener('click', adicionar_item)
+tarefa.addEventListener('keydown', function(event) {
+    if (event.key == 'Enter') {
+        adicionar_item()
+    }
+})
 
 function adicionar_item() {
     let new_item = document.createElement('li')
-    new_item.innerHTML = tarefa.value
+    new_item.innerHTML = id + " " + tarefa.value
+    new_item.id = id
+    id++
     tarefa.value = ""
     todo.appendChild(new_item)
+}
+
+botao_remover.addEventListener('click', remover_item)
+
+function remover_item() {
+    let item_remover = document.getElementById(input_remover.value)
+    item_remover.remove()
 }

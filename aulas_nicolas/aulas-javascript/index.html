@@ -8,19 +8,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="contas">
+        <input type="text" id="tarefa">
+        <button id="botao">Adicionar item</button>
+
+        <input type="number" id="input-remover">
+        <button id="botao-remover">Remover item</button>
+    </div>
+    <ul id="todo"></ul>
+    <hr>
+
     <input type="text" name="texto" id="texto">
     <p id="resultado">Você digitou: </p>
 
     <hr>
 
-    <h1>Numero 1</h1>
-    <input type="text" id="n1">
+    <div id="contas">
+        <div>
+            <h1>Numero 1</h1>
+            <input type="text" id="n1">
+    
+            <h1>Numero 2</h1>
+            <input type="text" id="n2">
+        </div>
 
-    <h1>Numero 2</h1>
-    <input type="text" id="n2">
-
-    <h1>Resultado</h1>
-    <p id="resultado-soma"></p>
+        <div>
+            <h1>Resultado</h1>
+            <p id="resultado-soma"></p>
+        </div>
+    </div>
 
     <hr>
 
@@ -34,10 +50,5 @@
 
     <input type="color" id="input-color">
     <div class="square" id="q1"></div>
-
-    <hr>
-    <input type="text" id="tarefa">
-    <button id="botao">Adicionar item</button>
-    <ul id="todo"></ul>
 </body>
 </html>

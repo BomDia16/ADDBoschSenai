@@ -112,3 +112,23 @@ function remover_item(row) {
     row.remove()
     input_remover.value = ""
 }
+
+let botao_card = document.getElementById('adicionar-card')
+botao_card.addEventListener('click', adicionar_card)
+let cards = document.getElementById('cards')
+
+function adicionar_card() {
+    let link = document.getElementById('link')
+    let descricao = document.getElementById('descricao')
+
+    let div = document.createElement('div')
+    let img = document.createElement('img')
+    let desc = document.createElement('p')
+    img.setAttribute('src', link.value)
+    desc.innerHTML = descricao.value
+
+    div.appendChild(img)
+    div.appendChild(desc)
+
+    cards.appendChild(div)
+}

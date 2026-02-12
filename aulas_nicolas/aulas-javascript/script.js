@@ -11,6 +11,7 @@ let tarefa = document.getElementById('tarefa')
 let id = 1
 let botao_remover = document.getElementById('botao-remover')
 let input_remover = document.getElementById('input-remover')
+let thead = document.getElementById('thead')
 
 input.addEventListener('input', function(event) {
     // 'event.target.value' pega o valor atual do input
@@ -53,6 +54,7 @@ input_color.addEventListener('input', function() {
 
 function mudar_cor(color) {
     quadrado.style.backgroundColor = color
+    thead.style.backgroundColor = color
 }
 
 botao.addEventListener('click', adicionar_item)
@@ -63,17 +65,50 @@ tarefa.addEventListener('keydown', function(event) {
 })
 
 function adicionar_item() {
-    let new_item = document.createElement('li')
-    new_item.innerHTML = id + " " + tarefa.value
-    new_item.id = id
-    id++
-    tarefa.value = ""
-    todo.appendChild(new_item)
+    // let new_item = document.createElement('li')
+    // new_item.innerHTML = id + " " + tarefa.value
+    // new_item.id = id
+    // id++
+    // tarefa.value = ""
+    // todo.appendChild(new_item)
+
+    if (tarefa.value != "") {
+        let row = document.createElement('tr')
+        let id_tabela = document.createElement('td')
+        let tarefa_tabela = document.createElement('td')
+        let remover_tabela = document.createElement('td')
+        let remover_item_tabela = document.createElement('button')
+
+        id_tabela.innerHTML = id
+        tarefa_tabela.innerHTML = tarefa.value
+        row.id = id
+        id++
+        tarefa.value = ""
+        remover_item_tabela.innerHTML = "Remover item"
+        remover_item_tabela.onclick = function() {
+            remover_item(row)
+        }
+        row.appendChild(id_tabela)
+        row.appendChild(tarefa_tabela)
+        remover_tabela.appendChild(remover_item_tabela)
+        row.appendChild(remover_tabela)
+        todo.appendChild(row)
+    }
 }
 
-botao_remover.addEventListener('click', remover_item)
+// botao_remover.addEventListener('click', remover_item)
+// input_remover.addEventListener('keydown', function(event) {
+//     if (event.key == 'Enter') {
+//         remover_item()
+//     }
+// })
 
-function remover_item() {
-    let item_remover = document.getElementById(input_remover.value)
-    item_remover.remove()
+function remover_item(row) {
+    // let item_remover = document.getElementById(input_remover.value)
+    // item_remover.remove()
+    // input_remover = ""
+
+    // let item_remover = document.getElementById(id_remover)
+    row.remove()
+    input_remover.value = ""
 }

@@ -8,21 +8,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>To Do List</h1>
     <div id="contas">
         <input type="text" id="tarefa">
         <button id="botao">Adicionar item</button>
-
-        <input type="number" id="input-remover">
-        <button id="botao-remover">Remover item</button>
     </div>
-    <ul id="todo"></ul>
+    <table>
+        <thead>
+            <tr id="thead">
+                <th>ID</th>
+                <th>Tarefa</th>
+                <th>Remover</th>
+            </tr>
+        </thead>
+        <tbody id="todo">
+            <tr></tr>
+        </tbody>
+    </table>
     <hr>
 
+    <h1>Digitado: </h1>
     <input type="text" name="texto" id="texto">
     <p id="resultado">Você digitou: </p>
 
     <hr>
 
+    <h1>Calculadora de Soma</h1>
     <div id="contas">
         <div>
             <h1>Numero 1</h1>
@@ -39,16 +50,21 @@
     </div>
 
     <hr>
+    
+    <h1>Mudar a cor</h1>
+
+    <input type="color" id="input-color">
+    <div class="square" id="q1"></div>
+    <hr>
+    
+    <h1>Gato dinossauro</h1>
 
     <img style="height: 500px;" id="gato" src="https://www.petz.com.br/blog/wp-content/uploads/2019/07/vida-de-gato.jpg">
     <p id="miado"></p>
     <br>
 
     <button onclick="transformar_gato()">Transformar em dinossauro</button>
+    
 
-    <hr>
-
-    <input type="color" id="input-color">
-    <div class="square" id="q1"></div>
 </body>
 </html>

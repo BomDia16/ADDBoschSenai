@@ -16,3 +16,42 @@ button {
 #contas div {
     width: 100%;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Sombra suave */
+}
+
+table thead tr {
+  background-color: #009879; /* Cor do cabeçalho */
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+table th, table td {
+  padding: 12px 15px; /* Espaçamento interno */
+}
+
+table tbody tr {
+  border-bottom: 1px solid #dddddd; /* Linha inferior */
+}
+
+/* Listras alternadas (efeito zebra) */
+table tbody tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+/* Destaque ao passar o mouse */
+table tbody tr:hover {
+  background-color: #f1f1f1;
+  color: #009879;
+}
+
+/* Estilo para a última linha */
+table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}

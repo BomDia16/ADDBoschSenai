@@ -2,6 +2,7 @@ let x = [1, "2", {
     name: "fjsldfjs",
     fajsldkfj: "korfgjekogje"
 }, true]
+let container = document.getElementById("container")
 
 const dados = []
 
@@ -17,11 +18,11 @@ console.log(dados)
 const pessoas = []
 
 const pessoa1 = {
-    name: 'regergreg',
+    name: 'Art',
     idade: 19
 }
 const pessoa2 = {
-    name: 'regergreg',
+    name: 'Gui',
     idade: 21
 }
 const pessoa3 = {
@@ -29,11 +30,11 @@ const pessoa3 = {
     idade: 19
 }
 const pessoa4 = {
-    name: 'regergreg',
+    name: 'Die',
     idade: 18
 }
 const pessoa5 = {
-    name: 'regergreg',
+    name: 'Lud',
     idade: 23
 }
 
@@ -49,3 +50,17 @@ console.log(filtro)
 
 achar = pessoas.find((p) => p.name == "Leticia")
 console.log(achar)
+
+function createCard(pessoa) {
+    let div = document.createElement('div')
+    let span = document.createElement('span')
+    span.innerHTML = `${pessoa.name} ${pessoa.idade}`
+    div.appendChild(span)
+
+    return div
+}
+
+filtro.forEach(pessoa => {
+    const card = createCard(pessoa)
+    container.appendChild(card)
+})

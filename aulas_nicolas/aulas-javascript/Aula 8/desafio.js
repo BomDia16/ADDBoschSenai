@@ -15,3 +15,127 @@ const users = [
     { id: 14, name: 'Gustavo', age: 23, salary: 3100, active: false, role: 'dev' },
     { id: 15, name: 'Larissa', age: 34, salary: 7600, active: true, role: 'manager' }
 ]
+
+const nameRole = users.map((user) => {
+    return {name : user.name, role : user.role}
+})
+// console.log(nameRole)
+
+const names = users.map((user) => {
+    return {name : user.name}
+})
+// console.log(names)
+
+// const namesCaps = users.map((user) => {
+//     return {name : user.name.toUpperCase()}
+// })
+// console.log(namesCaps)
+
+const anualSalary = users.map((user) => {
+    return {name : user.name, salaryAnnual : user.salary * 12}
+})
+// console.log(anualSalary)
+
+const namesAges = users.map((user) => {
+    return {name : user.name, age: user.age}
+})
+// console.log(namesAges)
+
+const namesSalary = users.map((user) => {
+    let salary = new Intl.NumberFormat('pt-BR', {
+        style: 'currency', currency: 'BRL'
+    }).format(user.salary)
+    return {name : user.name, "salary" : salary}
+})
+// console.log(namesSalary)
+
+const seriority = users.map((user) => {
+    let senioridade = ""
+    if (user.age < 25) {
+        senioridade = "Júnior"
+    } else if (user.age < 35) {
+        senioridade = "Pleno"
+    } else {
+        senioridade = "Senior"
+    }
+    return {name : user.name, "seniority" : senioridade}
+})
+// console.log(seriority)
+
+const salaryCateory = users.map((user) => {
+    let salaryLevel = ""
+    if (user.salary < 2000) {
+        salaryLevel = "Low"
+    } else if (user.salary < 6000) {
+        salaryLevel = "Medium"
+    } else {
+        salaryLevel = "High"
+    }
+    return {name : user.name, "salaryLevel" : salaryLevel}
+})
+// console.log(salaryCateory)
+
+const namesActive = users.map((user) => {
+    return {id : user.id, name : user.name, active : user.active}
+})
+// console.log(namesActive)
+
+const totalSalary = users.reduce((acc, value) => {
+    return acc + value.salary
+}, 0)
+// console.log(totalSalary)
+
+const avgSalary = users.reduce((acc, value) => {
+    return acc + value.salary / users.length
+}, 0)
+// console.log(avgSalary)
+
+const avgAge = users.reduce((acc, value) => {
+    return acc + value.age / users.length
+}, 0)
+// console.log(avgAge)
+
+const totalActive = users.reduce((acc, value) => {
+    if (value.active == true) {
+        return acc + 1
+    } else {
+        return acc
+    }
+}, 0)
+// console.log(totalActive)
+
+const totalInactive = users.reduce((acc, value) => {
+    if (value.active == false) {
+        return acc + 1
+    } else {
+        return acc
+    }
+}, 0)
+// console.log(totalInactive)
+
+const bestSalary = users.reduce((acc, value) => {
+    if (value.salary > acc) {
+        return acc = value.salary
+    } else {
+        return acc
+    }
+}, 0)
+// console.log(bestSalary)
+
+const worstSalary = users.reduce((acc, value) => {
+    if (value.salary < acc) {
+        return acc = value.salary
+    } else {
+        return acc
+    }
+}, users[0].salary)
+console.log(worstSalary)
+
+const salaryActive = users.reduce((acc, value) => {
+    if (value.active == true) {
+        return acc + value.salary
+    } else {
+        return acc
+    }
+}, 0)
+// console.log(salaryActive)

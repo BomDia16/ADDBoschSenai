@@ -129,7 +129,7 @@ const worstSalary = users.reduce((acc, value) => {
         return acc
     }
 }, users[0].salary)
-console.log(worstSalary)
+// console.log(worstSalary)
 
 const salaryActive = users.reduce((acc, value) => {
     if (value.active == true) {
@@ -138,4 +138,70 @@ const salaryActive = users.reduce((acc, value) => {
         return acc
     }
 }, 0)
-// console.log(salaryActive)
+console.log(salaryActive)
+
+const container = document.getElementById("container")
+
+function createCard(tema, pessoa) {
+    let div = document.createElement('div')
+    let h1 = document.createElement('h1')
+    let span = document.createElement('span')
+    let hr = document.createElement('hr')
+    span.innerHTML = `${pessoa}`
+    h1.innerHTML = tema
+    div.appendChild(h1)
+    div.appendChild(span)
+    div.appendChild(hr)
+
+    return div
+}
+
+const avgSalaryActive = users.reduce((acc, value) => {
+    if (value.active == true) {
+        return acc + value.salary / users.length
+    } else {
+        return acc
+    }
+}, 0)
+console.log(avgSalaryActive)
+let card = createCard("Média salarial dos ativos", avgSalaryActive)
+container.appendChild(card)
+
+card = createCard("O total da folha salarial", totalSalary)
+container.appendChild(card)
+
+const bestSalaryActive = users.reduce((acc, value) => {
+    if (value.active == true) {
+        if (value.salary > acc) {
+            return acc = value.salary
+        } else {
+            return acc
+        }
+    } else {
+        return acc
+    }
+}, 0)
+
+const bestSalaryNames = users.find(user => user.salary == bestSalaryActive)
+card = createCard("O nome do usuário com maior salário entre os ativos", bestSalaryNames.name)
+container.appendChild(card)
+
+const ativos = users.filter(element => element.active == true)
+const avgSalaryActiveManagers = ativos.reduce((acc, value) => {
+    if (value.role == "manager" && value.active == true) {
+        return acc + value.age / ativos.length
+    }
+    return acc
+}, 0)
+
+card = createCard("A média de idade dos managers ativos", avgSalaryActiveManagers)
+container.appendChild(card)
+
+const listNomes = users.map((value) => {
+    if (value.salary > 5000) {
+        return {name : value.name, role : value.role}
+    }
+    return
+})
+card = createCard("Uma lista apenas com { name, role } dos usuários que ganham mais que 5000", listNomes.name.toString())
+container.appendChild(card)

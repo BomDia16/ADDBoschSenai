@@ -42,11 +42,11 @@ console.log(pais);
 // }
 
 // console.log(fetchData("https://viacep.com.br/ws/82820330/json/"))
-const fetchData = async () => {
-    const people = await fetch("https://viacep.com.br/ws/81710110/json/")
+const fetchData = async (url) => {
+    const people = await fetch(url)
     const data = await people.json()
     console.log(data)
     return data
 }
 
-console.log(fetchData())
+console.log(fetchData("https://viacep.com.br/ws/81710110/json/"))

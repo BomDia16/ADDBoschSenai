@@ -18,6 +18,14 @@ class Conta {
         return this.#saldo
     }
 
+    get titular() {
+        return this.#titular
+    }
+
+    set titular(valor) {
+        this.#titular = valor
+    }
+
     depositar(n_conta, agencia, valor) {
         if (n_conta == this.#n_conta && agencia == this.#agencia) {
             if (valor <= 0) {
@@ -52,3 +60,6 @@ console.log(artur.saldo)
 artur.sacar(123,123,60)
 
 console.log(artur.saldo)
+
+artur.titular = "gjdlgkjdf"
+console.log(artur.titular)

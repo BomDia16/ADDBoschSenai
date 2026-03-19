@@ -7,11 +7,18 @@ export class User {
 
     constructor(id, name, email, password) {
         if (new.target !== User) {
-            this.#id = id
-            this.#name = name
-            this.#email = email
-            this.#password = password
-            this.#active = true
+            if (name &&
+                email.includes("@") &&
+                password.length >= 6
+            ) {
+                this.#id = id
+                this.#name = name
+                this.#email = email
+                this.#password = password
+                this.#active = true
+            } else {
+                console.error("Dados inválidos, nome não pode ser vazio, email deve ter @ e password deve ter no mínimo 6 digitos")
+            }
         } else {
             console.error("Não pode instanciar esse classe diretamente")
         }
@@ -26,11 +33,13 @@ export class User {
     }
 
     set name(valor) {
-        return this.#name = valor
+        if (valor != "") return this.#name = valor
+        return "O nome não pode ser vazio"
     }
 
     set password(valor) {
-        return this.#password = valor
+        if (valor.includes("@")) return this.#password = valor
+        return "O email deve conter @"
     }
 
     verificarSenhas(valor) {
@@ -45,6 +54,11 @@ export class User {
 
     set email(valor) {
         return this.#email = valor
+    }
+
+    set senha(valor) {
+        if (valor.lenght >= 6) return this.#password = valor
+        return "A senha deve ter mais de 6 digitos"
     }
 
     setInactive() {

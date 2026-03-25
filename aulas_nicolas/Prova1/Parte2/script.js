@@ -1,3 +1,5 @@
+/////// importar dataset
+
 let dados = require("./dados.json")
 
 /////// transformacao dos dados
@@ -31,8 +33,8 @@ console.log(quantidadeMenor5)
 /////// analise de dados
 
 // valor total em estoque
-let valorTotal = dados.reduce((acc, value) => {
-    return acc + value.preco
+let valorTotal = precoTotal.reduce((acc, value) => {
+    return acc + value.valorTotalIndividual
 }, 0)
 
 console.log(valorTotal);
@@ -40,7 +42,7 @@ console.log(valorTotal);
 // valor total em estoque eletronicos
 let eletronicos = dados.filter((p) => p.categoria == "Eletronico")
 let valorTotalEletronico = eletronicos.reduce((acc, value) => {
-    return acc + value.preco
+    return acc + (value.preco * value.quantidade)
 }, 0)
 
 console.log(valorTotalEletronico);
@@ -48,7 +50,7 @@ console.log(valorTotalEletronico);
 // valor total em estoque quantidade > 10
 let qMaior10 = dados.filter((p) => p.quantidade > 10)
 let valorTotalQMaior10 = qMaior10.reduce((acc, value) => {
-    return acc + value.preco
+    return acc + (value.preco * value.quantidade)
 }, 0)
 
 console.log(valorTotalQMaior10);

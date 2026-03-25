@@ -55,3 +55,11 @@ nav {
 h1 {
     color: white;
 }
+
+button {
+    background-color: rgb(28, 145, 255);
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 25px;
+}

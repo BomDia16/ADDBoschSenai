@@ -2,8 +2,8 @@ let produtos = []
 
 function adicionarProduto() {
     const nome = document.getElementById("nome").value
-    const preco = document.getElementById("preco").value
-    const quantidade = document.getElementById("quantidade").value
+    const preco = parseInt(document.getElementById("preco").value)
+    const quantidade = parseInt(document.getElementById("quantidade").value)
 
     let produto = {
         "nome": nome,
@@ -52,7 +52,7 @@ function adicionarProduto() {
     // valor total
 
     let valorTotal = produtos.reduce((acc, value) => {
-        return parseInt(acc) + parseInt(value.preco)
+        return parseInt(acc) + (parseInt(value.preco) * parseInt(value.quantidade))
     }, 0)
 
     let pValorTotal = document.getElementById("valorTotal")

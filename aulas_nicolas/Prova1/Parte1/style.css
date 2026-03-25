@@ -5,7 +5,7 @@ body {
 
 nav {
     width: 100%;
-    background-color: rgb(58, 58, 252);
+    background-color: rgb(28, 145, 255);
     display: flex;
     justify-content: center;
     height: 50px;
@@ -27,10 +27,31 @@ nav {
 
 .card {
     width: 402px;
+    height: 500px;
+    border: 1px solid black;
 }
 
 .cards {
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+.card-header {
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    border-bottom: 1px solid black;
+}
+
+.card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55%;
+}
+
+h1 {
+    color: white;
 }

@@ -1,0 +1,36 @@
+body {
+    width: 100%;
+    margin: 0px;
+}
+
+nav {
+    width: 100%;
+    background-color: rgb(58, 58, 252);
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+}
+
+.div-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50px;
+    background-color: rgb(243, 243, 243);
+}
+
+.card {
+    width: 402px;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

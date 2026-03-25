@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Análise de Produtos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- eu sei que está feio, mas está funcionando -->
+    <div class="container">
+        <nav>
+            <h1>
+                Painel de Análise de Produtos
+            </h1>
+        </nav>
+
+        <div class="div-form">
+            <input placeholder="Nome" id="nome" type="text">
+            <input placeholder="Preço" id="preco" type="text">
+            <input placeholder="Quantidade" id="quantidade" type="text">
+            <button onclick="adicionarProduto()" type="submit">Adicionar Produto</button>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h1>Produto mais caro</h1>
+                <hr>
+                <p id="maisCaro"></p>
+            </div>
+
+            <div class="card">
+                <h1>Produto com maior quantidade</h1>
+                <hr>
+                <p id="maiorQuantidade"></p>
+            </div>
+
+            <div class="card">
+                <h1>Valor total em estoque</h1>
+                <hr>
+                <p id="valorTotal"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

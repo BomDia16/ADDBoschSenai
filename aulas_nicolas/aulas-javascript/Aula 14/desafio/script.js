@@ -94,7 +94,7 @@ new Chart(quantidadeCategoriaChart, {
         return p.categoria
     }),
     datasets: [{
-        label: 'Faturamento por Categoria',
+        label: 'Quantidade por Categoria',
         data: categorias.map((p) => {
             return p.quantidade
         }),
@@ -156,4 +156,99 @@ new Chart(faturamentoCidadeChart, {
         }
     }
 });
+
+let quantidadeCidadeChart = document.getElementById('quantidadeCidade')
+
+const quantidadePorCidade = dados.reduce((acc, produto) => {
+  const { cidade, quantidade } = produto;
+
+  if (!acc[cidade]) {
+    acc[cidade] = 0;
+  }
+
+  acc[cidade] += quantidade;
+
+  return acc;
+}, {});
+
+cidades = []
+for (let chave in quantidadePorCidade) {
+    let dado = {
+        cidade: chave,
+        quantidade: quantidadePorCidade[chave]
+    }
+    cidades.push(dado)
+}
+
+new Chart(quantidadeCidadeChart, {
+    type: 'pie',
+    data: {
+    labels: cidades.map(p => {
+        return p.cidade
+    }),
+    datasets: [{
+        label: 'Quantidade por Cidade',
+        data: cidades.map((p) => {
+            return p.quantidade
+        }),
+        borderWidth: 1
+    }]
+    },
+    options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+    }
+});
+
+let faturamentoClienteChart = document.getElementById('faturamentoCliente')
+
+const faturamentoPorCliente = dados.reduce((acc, produto) => {
+  const { cliente, preco, quantidade } = produto;
+  const faturamento = preco * quantidade;
+
+  if (!acc[cliente]) {
+    acc[cliente] = 0;
+  }
+
+  acc[cliente] += faturamento;
+
+  return acc;
+}, {});
+
+let clientes = []
+for (let chave in faturamentoPorCliente) {
+    let dado = {
+        cliente: chave,
+        valor: faturamentoPorCliente[chave]
+    }
+    clientes.push(dado)
+}
+
+new Chart(faturamentoClienteChart, {
+    type: 'bar',
+    data: {
+    labels: clientes.map(p => {
+        return p.cliente
+    }),
+    datasets: [{
+        label: 'Faturamento por Cliente',
+        data: clientes.map((p) => {
+            return p.valor
+        }),
+        borderWidth: 1
+    }]
+    },
+    options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+    }
+});
+
+let quantidadeClienteChart = document.getElementById('quantidadeCliente')
 

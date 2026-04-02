@@ -15,7 +15,6 @@ const dados = [
   { "id": 14, "produto": "Teclado", "categoria": "Eletrônicos", "preco": 250, "quantidade": 2, "cliente": "Fernanda", "cidade": "Curitiba", "data": "2025-03-12" },
   { "id": 15, "produto": "Mouse", "categoria": "Eletrônicos", "preco": 100, "quantidade": 3, "cliente": "João", "cidade": "Curitiba", "data": "2025-03-15" }
 ]
-console.log(dados)
 
 let faturamentoCategoriaChart = document.getElementById('faturamentoCategoria')
 
@@ -43,6 +42,31 @@ for (let chave in faturamentoPorCategoria) {
 
 new Chart(faturamentoCategoriaChart, {
     type: 'bar',
+    data: {
+    labels: categorias.map(p => {
+        return p.categoria
+    }),
+    datasets: [{
+        label: 'Faturamento por Categoria',
+        data: categorias.map((p) => {
+            return p.valor
+        }),
+        borderWidth: 1
+    }]
+    },
+    options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+    }
+});
+
+let faturamentoCategoriaPieChart = document.getElementById('faturamentoCategoriaPie')
+
+new Chart(faturamentoCategoriaPieChart, {
+    type: 'pie',
     data: {
     labels: categorias.map(p => {
         return p.categoria
@@ -252,3 +276,64 @@ new Chart(faturamentoClienteChart, {
 
 let quantidadeClienteChart = document.getElementById('quantidadeCliente')
 
+const contagem = {};
+
+dados.forEach(item => {
+  if (!contagem[item.cidade]) {
+    contagem[item.cidade] = new Set();
+  }
+  contagem[item.cidade].add(item.cliente);
+});
+
+// converter Set → número
+const resultadoFinal = {};
+for (let cidade in contagem) {
+  resultadoFinal[cidade] = contagem[cidade].size;
+}
+
+new Chart(quantidadeClienteChart, {
+    type: 'pie',
+    data: {
+    labels: Object.keys(resultadoFinal),
+    datasets: [{
+        label: 'Quantidade de Clientes por Cidade',
+        data: Object.values(resultadoFinal),
+        borderWidth: 1
+    }]
+    },
+    options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+    }
+});
+
+let quantidadeProdutoChart = document.getElementById('quantidadeProduto')
+
+let quantidades = dados.map(p => {
+    return p.quantidade
+}, [])
+let produtos = dados.map(p => {
+    return p.produto
+}, [])
+
+new Chart(quantidadeProdutoChart, {
+    type: 'bar',
+    data: {
+    labels: produtos,
+    datasets: [{
+        label: 'Quantidade vendida por Produto',
+        data: quantidades,
+        borderWidth: 1
+    }]
+    },
+    options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+    }
+});

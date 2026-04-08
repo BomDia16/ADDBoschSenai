@@ -14,13 +14,15 @@ app.use(cors({
 
 const connection = mysql.createConnection({
     user: "root",
-    password: "",
+    password: "root",
     host: "localhost",
     database: "aula_add",
     port: 3307
 })
 
-console.log(connection)
+if (connection) {
+    console.log("Banco de dados conectado")
+}
 
 app.get('/', (req, res) => {
     return res.send('Servidor funcionando')

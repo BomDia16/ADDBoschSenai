@@ -337,3 +337,99 @@ new Chart(quantidadeProdutoChart, {
         }
     }
 });
+
+
+let quantidadeFaturamentoChart = document.getElementById("quantidadeFaturamento")
+
+const resumo = {};
+
+dados.forEach(item => {
+  if (!resumo[item.categoria]) {
+    resumo[item.categoria] = {
+      quantidade: 0,
+      faturamento: 0
+    };
+  }
+
+  resumo[item.categoria].quantidade += item.quantidade;
+  resumo[item.categoria].faturamento += item.preco * item.quantidade;
+});
+
+const labels = Object.keys(resumo);
+
+const quantidadeData = labels.map(cat => resumo[cat].quantidade);
+const faturamentoData = labels.map(cat => resumo[cat].faturamento);
+
+new Chart(quantidadeFaturamentoChart, {
+    type: 'bar',
+    data: {
+    labels: labels,
+    datasets: [{
+        label: 'Quantidade vendida por Categoria',
+        data: quantidadeData,
+        yAxisID: 'A',
+        borderWidth: 1,
+        backgroundColor: 'rgba(54, 162, 235, 0.7)'
+    },
+    {
+        label: 'Faturamento por Categoria',
+        data: faturamentoData,
+        borderWidth: 1,
+        yAxisID: "B",
+        backgroundColor: 'rgba(255, 99, 132, 0.7)'
+    }]
+    },
+    options: {
+        scales: {
+            A: {
+                type: 'linear',
+                position: "left",
+            },
+            B: {
+                type: 'linear',
+                position: "right",
+            }
+        }
+    }
+});
+
+let vendasMesChart = document.getElementById("vendasMes")
+
+let meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+
+function month(date) {
+    let result = meses[parseInt(date.split('-')[1]) - 1]
+    return result
+}
+
+const group_mes = dados.reduce((acc, row) => {
+    let M = month(row.data)
+    let found = acc.find((x) => x.mes === M)
+
+    if (!found) {
+        found = {mes: M, contagem: 0}
+        acc.push(found)
+    }
+
+    found.contagem += 1
+    return acc
+}, [])
+
+new Chart(vendasMesChart, {
+    type: 'bar',
+    data: {
+    labels: group_mes.map((valor) => valor.mes),
+    datasets: [{
+        label: 'Quantidade vendida por Mês',
+        data: group_mes.map((valor) => valor.contagem),
+        borderWidth: 1
+    }]
+    },
+    options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+    }
+});

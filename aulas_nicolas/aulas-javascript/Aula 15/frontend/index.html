@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mid-end</title>
 </head>
 <body>
-    bom dia
+    <form method="post" id="form">
+        <input type="text" name="nome" id="nome" placeholder="Nome">
+        <input type="email" name="email" id="email" placeholder="Email">
+        <button type="submit">Registrar</button>
+    </form>
+
+    <br><br><br>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="listaUsuarios">
+            
+        </tbody>
+    </table>
+
+    <script src="scripts/index.js"></script>
 </body>
 </html>

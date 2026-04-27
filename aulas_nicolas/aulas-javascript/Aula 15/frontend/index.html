@@ -19,12 +19,21 @@
             <tr>
                 <th>Nome</th>
                 <th>Email</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody id="listaUsuarios">
-            
+            <!-- Conteúdo da tabela -->
         </tbody>
     </table>
+
+    <br><br><br>
+
+    <form method="post" id="form_atualizar">
+        <input type="text" name="nome" id="nome_atualizar" placeholder="Nome">
+        <input type="email" name="email" id="email_atualizar" placeholder="Email">
+        <button type="submit">Atualizar</button>
+    </form>
 
     <script src="scripts/index.js"></script>
 </body>

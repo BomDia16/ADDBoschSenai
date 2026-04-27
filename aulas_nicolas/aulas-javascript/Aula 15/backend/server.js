@@ -86,5 +86,5 @@ app.put('/atualizar/:id', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log("Servidor rodando em http://localhost:8080")
+    console.log("Servidor rodando em http://localhost:8090")
 })

@@ -1,5 +1,6 @@
 const form = document.getElementById('form')
 const form_atualizar = document.getElementById('form_atualizar')
+const mensagem = document.getElementById("atualizarDeletarMensagem")
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault()
@@ -19,6 +20,7 @@ form.addEventListener('submit', async (e) => {
     
     const data = await response.json()
     console.log(data)
+    document.getElementById("atualizarDeletarMensagem").innerHTML = data
     carregarUsuarios()
 
     document.getElementById('nome').value = ""
@@ -27,11 +29,12 @@ form.addEventListener('submit', async (e) => {
 
 form_atualizar.addEventListener('submit', async (e) => {
     e.preventDefault()
-    const nome = document.getElementById('nome').value
-    const email = document.getElementById('email').value
+    const id = document.getElementById('id_atualizar').value
+    const nome = document.getElementById('nome_atualizar').value
+    const email = document.getElementById('email_atualizar').value
     
-    const response = await fetch('http://localhost:8090/registro', {
-        method: 'POST',
+    const response = await fetch(`http://localhost:8090/atualizar/${id}`, {
+        method: 'PUT',
         headers: {
             "Content-Type": "application/json"
         },
@@ -43,10 +46,12 @@ form_atualizar.addEventListener('submit', async (e) => {
     
     const data = await response.json()
     console.log(data)
+    mensagem.value = data
     carregarUsuarios()
 
-    document.getElementById('nome').value = ""
-    document.getElementById('email').value = ""
+    document.getElementById('id_atualizar').value = ""
+    document.getElementById('nome_atualizar').value = ""
+    document.getElementById('email_atualizar').value = ""
 })
 
 async function carregarUsuarios() {
@@ -74,9 +79,11 @@ async function carregarUsuarios() {
 }
 
 async function atualizarUsuario(id, nome, email) {
+    const id_atualizar = document.getElementById("id_atualizar")
     const nome_atualizar = document.getElementById("nome_atualizar")
     const email_atualizar = document.getElementById("email_atualizar")
 
+    id_atualizar.value = id
     nome_atualizar.value = nome
     email_atualizar.value = email
 }
@@ -87,6 +94,7 @@ async function deletarUsuario(id) {
     })
 
     carregarUsuarios()
+
 }
 
 window.onload(carregarUsuarios())

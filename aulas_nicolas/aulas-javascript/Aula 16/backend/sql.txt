@@ -1,0 +1,14 @@
+create database loja;
+use loja;
+
+create table vendas (
+	id int primary key auto_increment,
+    produto varchar(45) not null,
+    categoria_produto varchar(45) not null,
+    quantidade int not null,
+    preco_unitario decimal(5,2) not null,
+    valor_total decimal(5,2) not null,
+    data_venda date not null,
+    forma_pagamento varchar(45) not null,
+    responsavel varchar(45) not null
+)

@@ -19,6 +19,69 @@
 
             <button type="submit">Comprar</button>
         </form>
+
+        <br>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Categoria</th>
+                    <th>Quantidade</th>
+                    <th>Valor Total</th>
+                    <th>Data Venda</th>
+                    <th>Forma Pagamentohg</th>
+                </tr>
+            </thead>
+            <tbody id="listaUsuarios">
+                <!-- Conteúdo da tabela -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="scripts/index.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <h1>Vendas</h1>
+
+    <div style="display: flex; flex-direction:column;">
+        <form id="form_create" method="post" style="display: flex; flex-direction:column; width: 20%">
+            <input type="text" id="produto" placeholder="produto">
+            <input type="number" id="quantidade" id="" placeholder="quantidade">
+            <input type="text" id="preco_unitario" placeholder="preco unitario">
+            <input type="text" id="forma_pagamento" placeholder="forma_pagamento">
+            <input type="text" id="responsavel" placeholder="responsavel">
+            <input type="text" id="categoria_produto" placeholder="categoria_produto">
+
+            <button type="submit">Comprar</button>
+        </form>
+
+        <br>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Categoria</th>
+                    <th>Quantidade</th>
+                    <th>Valor Total</th>
+                    <th>Data Venda</th>
+                    <th>Forma Pagamento</th>
+                    <th>Responsável</th>
+                    <th>-</th>
+                </tr>
+            </thead>
+            <tbody id="listaUsuarios">
+                <!-- Conteúdo da tabela -->
+            </tbody>
+        </table>
     </div>
 
     <script src="scripts/index.js"></script>

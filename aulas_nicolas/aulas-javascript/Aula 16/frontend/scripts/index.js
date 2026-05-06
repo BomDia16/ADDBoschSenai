@@ -33,3 +33,34 @@ form.addEventListener('submit', async (e) => {
     document.getElementById('forma_pagamento').value = ""
     document.getElementById('responsavel').value = ""
 })
+
+async function carregarUsuarios() {
+    const response = await fetch('http://localhost:8080/vendas')
+    
+    const usuarios = await response.json()
+
+    const tbody = document.getElementById('listaUsuarios')
+
+    tbody.innerHTML = ""
+    
+    usuarios.forEach(user => {
+        const tr = document.createElement('tr')
+        tr.innerHTML = `
+            <td>${user.produto}</td>
+            <td>${user.categoria_produto}</td>
+            <td>${user.quantidade}</td>
+            <td>${user.valor_total}</td>
+            <td>${user.data_venda}</td>
+            <td>${user.forma_pagamento}</td>
+            <td>${user.responsavel}</td>
+            <td>
+                <button onclick="deletarUsuario(${user.id})">Deletar</button>
+                <button onclick="atualizarUsuario(${user.id}, '${user.nome}', '${user.email}')">Atualizar</button>
+            </td>
+        `
+        
+        tbody.appendChild(tr)
+    });
+}
+
+window.onload(carregarUsuarios())

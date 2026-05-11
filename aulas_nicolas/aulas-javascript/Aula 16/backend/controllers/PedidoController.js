@@ -54,7 +54,23 @@ export class PedidoController {
 
     static updatePedido(req, res) {
         const { id } = req.params
+        const { cliente, itens, status } = req.body
 
-        
+        pedidos.forEach(element => {
+            if (element['id'] == parseInt(id)) {
+                console.log("chegou")
+                const dados = {
+                    "id": parseInt(id),
+                    "cliente": cliente,
+                    "itens": itens,
+                    "status": status
+                }
+
+                pedidos[parseInt(id) - 1] = dados
+                return res.status(200).send("Pedido atualizada com sucesso")
+            }
+        })
+
+        return res.status(500).send("Erro ao atualizar o pedido")
     }
 }

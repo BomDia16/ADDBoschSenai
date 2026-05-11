@@ -24,17 +24,17 @@ app.listen(port, () => console.log(`Acesse: http://localhost:${port}/`))
 //     res.send("sfjsokjgojgk")
 // })
 
-const connection = mysql.createConnection({
-    user: "root",
-    password: "root",
-    host: "localhost",
-    database: "loja",
-    port: 3307
-})
+// const connection = mysql.createConnection({
+//     user: "root",
+//     password: "root",
+//     host: "localhost",
+//     database: "loja",
+//     port: 3307
+// })
 
-if(connection){
-    console.log("Banco de dados conectado!")
-}
+// if(connection){
+//     console.log("Banco de dados conectado!")
+// }
 
 app.get('/', (req, res) => {
     return res.send("Servidor funcionando corretamente!")

@@ -11,4 +11,11 @@ create table vendas (
     data_venda date not null,
     forma_pagamento varchar(45) not null,
     responsavel varchar(45) not null
+);
+
+create table user (
+	id int primary key auto_increment,
+    name varchar(100) not null,
+    email varchar(100) not null,
+    password varchar(250) not null
 )

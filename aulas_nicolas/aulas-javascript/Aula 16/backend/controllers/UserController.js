@@ -35,7 +35,7 @@ export const createUser = (req, res) => {
             [name, email, password]
         )
 
-        return res.status(200).send({ response: "Usuário registrado" })
+        return res.status(201).send({ response: "Usuário registrado" })
     } catch {
         return res.status(500).send({ response: "Erro ao registrar usuário" })
     }

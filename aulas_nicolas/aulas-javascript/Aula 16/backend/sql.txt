@@ -29,3 +29,11 @@ create table pecas (
     preco_unitario decimal(10,2) not null,
     estoque varchar(45) not null
 );
+
+create table escola (
+	id int primary key auto_increment,
+    descricao varchar(150) not null,
+    local_encontrado varchar(50) not null,
+    status boolean not null,
+    data_achado timestamp not null
+);

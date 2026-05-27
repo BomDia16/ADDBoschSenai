@@ -3,6 +3,7 @@ import user from './user.js'
 import vehicle from './vehicle.js'
 import pedido from './pedido.js'
 import peca from './peca.js'
+import escola from './escola.js'
 
 export default function(app) {
     app
@@ -11,4 +12,5 @@ export default function(app) {
     .use('/vehicle', vehicle)
     .use('/pedido', pedido)
     .use('/pecas', peca)
+    .use('/escola', escola)
 }

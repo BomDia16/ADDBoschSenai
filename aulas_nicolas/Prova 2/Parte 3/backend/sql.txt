@@ -1,0 +1,10 @@
+create database empresa;
+use empresa;
+
+create table funcionarios (
+	id int primary key auto_increment,
+    nome varchar(50) not null,
+    sobrenome varchar(50) not null,
+    setor varchar(50) not null,
+    funcao varchar(50) not null
+)

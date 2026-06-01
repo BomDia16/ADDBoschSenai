@@ -26,18 +26,18 @@ export const createFuncionario = (req, res) => {
 }
 
 export const updateFuncionario = (req, res) => {
-    const { name, email, password } = req.body
+    const { nome, sobrenome, setor, funcao } = req.body
     const { id } = req.params
 
     try {
         const atualizar = connection.query(
-            "UPDATE user SET name = ?, email = ?, password = ? WHERE id = ?",
-            [name, email, password, id]
+            "UPDATE funcionarios SET nome = ?, sobrenome = ?, setor = ?, funcao = ? WHERE id = ?",
+            [nome, sobrenome, setor, funcao, id]
         )
 
-        return res.status(200).send({ response: "Usuário atualizado com sucesso" })
+        return res.status(200).send({ response: "Funcionário atualizado com sucesso" })
     } catch {
-        return res.status(500).send({ response: "Erro ao atualizar o usuário" })
+        return res.status(500).send({ response: "Erro ao atualizar o funcionário" })
     }
 }
 
@@ -46,34 +46,34 @@ export const deleteFuncionario = (req, res) => {
 
     try {
         const deletar = connection.query(
-            "DELETE FROM user WHERE id = ?",
+            "DELETE FROM funcionarios WHERE id = ?",
             [id]
         )
 
-        return res.status(200).send({ response: "Usuário deletado com sucesso" })
+        return res.status(200).send({ response: "Funcionário deletado com sucesso" })
     } catch {
-        return res.status(500).send({ response: "Erro ao deletar o usuário" })
+        return res.status(500).send({ response: "Erro ao deletar o funcionário" })
     }
 }
 
-export const findFuncionario = (req, res) => {
-    const { id } = req.params
+export const findSetor = (req, res) => {
+    const { setor } = req.params
 
     try {
         const user = connection.query(
-            'SELECT * FROM user WHERE id = ?',
-            [id],
+            'select * from funcionarios where setor = ?;',
+            [setor],
             (err, results) => {
                 if (err) {
-                    return res.status(500).json({ error: "Erro ao buscar usuário" });
+                    return res.status(500).json({ error: "Erro ao buscar funcionários" });
                 }
                 if (results.length === 0) {
-                    return res.status(404).json({ error: "Usuário não encontrado" });
+                    return res.status(404).json({ error: "Funcionários não encontrados nesse setor" });
                 }
-                return res.json(results[0]);
+                return res.json(results);
             }
         )
     } catch {
-        return res.status(500).send({ response: "Erro ao achar o usuário" })
+        return res.status(500).send({ response: "Erro ao achar o setor" })
     }
 }
